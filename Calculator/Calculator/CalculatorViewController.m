@@ -31,8 +31,17 @@
     [self.display setText:newText];
 }
 
+- (IBAction)clearBrainStack:(UIButton *)sender {
+    [[self brain] clearStack];
+    self.display.text = @"0";
+}
+
 - (IBAction)enterPressed:(UIButton *)sender {
     [self pushOperand];
+}
+
+- (IBAction)calculatePI:(UIButton *)sender {
+    self.display.text = [NSString stringWithFormat:@"%1.2f", [[self brain] calcPI]];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {

@@ -14,4 +14,6 @@
 
 -(double) performOperation:(NSString *) operation;
 - (void) pushOperand:(NSString*) operand;
+- (void) clearStack;
+- (double) calcPI;
 @end
