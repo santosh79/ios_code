@@ -25,8 +25,8 @@
 
 -(double) performOperation:(NSString *) operation
 {
-    NSString * firstOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
     NSString * secondOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
+    NSString * firstOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
     
     double result;
     if ([operation isEqualToString:@"+"]) {

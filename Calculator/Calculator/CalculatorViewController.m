@@ -32,14 +32,18 @@
 }
 
 - (IBAction)enterPressed:(UIButton *)sender {
-    [[self brain] pushOperand:[self.display text]];
-    [self.display setText:@"0"];
+    [self pushOperand];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
+    [self pushOperand];
     NSString * operation = [sender currentTitle];
     double result = [[self brain] performOperation:operation];
     [self.display setText:[NSString stringWithFormat:@"%1.2f", result]];
 }
 
+- (void) pushOperand {
+    [[self brain] pushOperand:[self.display text]];
+    [self.display setText:@"0"];
+}
 @end
