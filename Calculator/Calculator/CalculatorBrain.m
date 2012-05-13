@@ -26,7 +26,7 @@
 }
 
 - (void) clearStack {
-    [_programStack removeAllObjects];
+    [self.programStack removeAllObjects];
 }
 
 -(double) performOperation:(NSString *) operation
@@ -55,7 +55,7 @@
 }
 
 - (double) performSingleOperandOperation:(NSString *) operation {
-    NSString * mostRecentOperand = [_programStack lastObject]; [_programStack removeLastObject];
+    NSString * mostRecentOperand = [self.programStack lastObject]; [self.programStack removeLastObject];
     if(!mostRecentOperand) { return 0.0; }
     double result;
     
@@ -73,8 +73,8 @@
 }
 
 - (double) performTwoOperandOperation:(NSString *) operation {
-    NSString * secondOperand = [_programStack lastObject]; [_programStack removeLastObject];
-    NSString * firstOperand = [_programStack lastObject]; [_programStack removeLastObject];
+    NSString * secondOperand = [self.programStack lastObject]; [self.programStack removeLastObject];
+    NSString * firstOperand = [self.programStack lastObject]; [self.programStack removeLastObject];
     
     double result;
     if ([operation isEqualToString:@"+"]) {
