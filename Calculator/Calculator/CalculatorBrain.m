@@ -10,23 +10,23 @@
 #include "math.h"
 
 @implementation CalculatorBrain
-@synthesize operandStack = _operandStack;
+@synthesize programStack = _programStack;
 
-- (NSMutableArray *) operandStack
+- (NSMutableArray *) programStack
 {
-    if (!_operandStack) {
-        _operandStack = [[NSMutableArray alloc] init];
+    if (!_programStack) {
+        _programStack = [[NSMutableArray alloc] init];
     }
-    return _operandStack;
+    return _programStack;
 }
 
 - (void) pushOperand:(NSString*) operand
 {
-    [[self operandStack] addObject:operand];
+    [[self programStack] addObject:operand];
 }
 
 - (void) clearStack {
-    [_operandStack removeAllObjects];
+    [_programStack removeAllObjects];
 }
 
 -(double) performOperation:(NSString *) operation
@@ -55,7 +55,7 @@
 }
 
 - (double) performSingleOperandOperation:(NSString *) operation {
-    NSString * mostRecentOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
+    NSString * mostRecentOperand = [_programStack lastObject]; [_programStack removeLastObject];
     if(!mostRecentOperand) { return 0.0; }
     double result;
     
@@ -73,8 +73,8 @@
 }
 
 - (double) performTwoOperandOperation:(NSString *) operation {
-    NSString * secondOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
-    NSString * firstOperand = [_operandStack lastObject]; [_operandStack removeLastObject];
+    NSString * secondOperand = [_programStack lastObject]; [_programStack removeLastObject];
+    NSString * firstOperand = [_programStack lastObject]; [_programStack removeLastObject];
     
     double result;
     if ([operation isEqualToString:@"+"]) {

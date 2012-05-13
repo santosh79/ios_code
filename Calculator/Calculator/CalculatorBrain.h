@@ -10,9 +10,13 @@
 
 @interface CalculatorBrain : NSObject
 
-@property (nonatomic) NSMutableArray * operandStack;
+@property (nonatomic) NSMutableArray * programStack;
 -(double) performOperation:(NSString *) operation;
 - (void) pushOperand:(NSString*) operand;
 - (void) clearStack;
 - (double) calcPI;
+
+@property (readonly) id program;
++ (double) runProgram:(id)program;
++ (NSString *) descriptionOfProgram:(id)program;
 @end
