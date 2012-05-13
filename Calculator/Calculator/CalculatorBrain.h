@@ -12,9 +12,9 @@
 
 @property (nonatomic) NSMutableArray * programStack;
 -(double) performOperation:(NSString *) operation;
-- (void) pushOperand:(NSString*) operand;
+- (void) pushOperand:(NSNumber*) operand;
 - (void) clearStack;
-- (double) calcPI;
++ (double) calcPI;
 
 @property (readonly) id program;
 + (double) runProgram:(id)program;

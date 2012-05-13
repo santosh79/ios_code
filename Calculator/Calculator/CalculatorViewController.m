@@ -41,18 +41,19 @@
 }
 
 - (IBAction)calculatePI:(UIButton *)sender {
-    self.display.text = [NSString stringWithFormat:@"%1.2f", [[self brain] calcPI]];
+    self.display.text = [NSString stringWithFormat:@"%1.2f", [CalculatorBrain calcPI]];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
-    [[self brain] pushOperand:[self.display text]];
+    [self pushOperandAndClearDisplay];
     NSString * operation = [sender currentTitle];
     double result = [[self brain] performOperation:operation];
     [self.display setText:[NSString stringWithFormat:@"%1.2f", result]];
 }
 
 - (void) pushOperandAndClearDisplay {
-    [[self brain] pushOperand:[self.display text]];
+    NSNumber * operand = [NSNumber numberWithInt:[self.display.text intValue]];
+    [[self brain] pushOperand:operand];
     [self.display setText:@"0"];
 }
 @end
