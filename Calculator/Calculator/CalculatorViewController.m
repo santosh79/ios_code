@@ -37,7 +37,7 @@
 }
 
 - (IBAction)enterPressed:(UIButton *)sender {
-    [self pushOperand];
+    [self pushOperandAndClearDisplay];
 }
 
 - (IBAction)calculatePI:(UIButton *)sender {
@@ -45,13 +45,13 @@
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
-    [self pushOperand];
+    [[self brain] pushOperand:[self.display text]];
     NSString * operation = [sender currentTitle];
     double result = [[self brain] performOperation:operation];
     [self.display setText:[NSString stringWithFormat:@"%1.2f", result]];
 }
 
-- (void) pushOperand {
+- (void) pushOperandAndClearDisplay {
     [[self brain] pushOperand:[self.display text]];
     [self.display setText:@"0"];
 }
