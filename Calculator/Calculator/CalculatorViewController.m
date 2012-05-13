@@ -9,12 +9,13 @@
 #import "CalculatorViewController.h"
 
 @interface CalculatorViewController ()
-
+- (void) updateStuffDisplayed:(NSString *)operationOrOperand;
 @end
 
 @implementation CalculatorViewController
 
 @synthesize display = _display;
+@synthesize stuffEnteredLabel = _stuffEnteredLabel;
 
 - (CalculatorBrain *) brain
 {
@@ -34,6 +35,7 @@
 - (IBAction)clearBrainStack:(UIButton *)sender {
     [[self brain] clearStack];
     self.display.text = @"0";
+    self.stuffEnteredLabel.text = @" ";
 }
 
 - (IBAction)enterPressed:(UIButton *)sender {
@@ -49,11 +51,26 @@
     NSString * operation = [sender currentTitle];
     double result = [[self brain] performOperation:operation];
     [self.display setText:[NSString stringWithFormat:@"%1.2f", result]];
+    [self updateStuffDisplayed:operation];
+}
+
+- (void) updateStuffDisplayed:(NSString *)operationOrOperand {
+    NSString * currentStuffDisplayed = self.stuffEnteredLabel.text;
+    
+    NSString * newDisplayText = [NSString stringWithFormat:@"%@ %@", currentStuffDisplayed, operationOrOperand];
+    self.stuffEnteredLabel.text = newDisplayText;        
+
 }
 
 - (void) pushOperandAndClearDisplay {
     NSNumber * operand = [NSNumber numberWithInt:[self.display.text intValue]];
     [[self brain] pushOperand:operand];
     [self.display setText:@"0"];
+    [self updateStuffDisplayed:[operand stringValue]];
+}
+
+- (void)viewDidUnload {
+    [self setStuffEnteredLabel:nil];
+    [super viewDidUnload];
 }
 @end

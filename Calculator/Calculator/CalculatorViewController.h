@@ -14,5 +14,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
+@property (weak, nonatomic) IBOutlet UILabel *stuffEnteredLabel;
 
 @end
