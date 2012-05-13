@@ -10,6 +10,7 @@
 #include "math.h"
 
 @implementation CalculatorBrain
+@synthesize operandStack = _operandStack;
 
 - (NSMutableArray *) operandStack
 {

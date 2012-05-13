@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CalculatorBrain : NSObject {
-    NSMutableArray * _operandStack;
-}
+@interface CalculatorBrain : NSObject
 
+@property (nonatomic) NSMutableArray * operandStack;
 -(double) performOperation:(NSString *) operation;
 - (void) pushOperand:(NSString*) operand;
 - (void) clearStack;
