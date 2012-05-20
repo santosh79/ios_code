@@ -93,6 +93,14 @@
     return [self popOperandOffStack:stack];
 }
 
++ (NSSet *)variablesUsedInProgram:(id)program {
+    return nil;
+}
+
++ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
+    return 0.0;
+}
+
 + (BOOL) isTwoOperandOperation:(NSString *) operation {
     return ([operation isEqualToString:@"+"] || [operation isEqualToString:@"-"] || [operation isEqualToString:@"*"] || [operation isEqualToString:@"/"]);
 }

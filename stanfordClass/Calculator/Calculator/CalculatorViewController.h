@@ -15,5 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *stuffEnteredLabel;
+@property (weak, nonatomic) IBOutlet UILabel *programDescription;
 
 @end

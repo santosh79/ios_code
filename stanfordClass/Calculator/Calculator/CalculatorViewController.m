@@ -16,11 +16,16 @@
 
 @synthesize display = _display;
 @synthesize stuffEnteredLabel = _stuffEnteredLabel;
+@synthesize programDescription = _programDescription;
 
 - (CalculatorBrain *) brain
 {
     if(!_brain) { _brain = [[CalculatorBrain alloc] init]; }
     return _brain;
+}
+
+- (void)updateDescription {
+    self.programDescription.text = [CalculatorBrain descriptionOfProgram:[self brain].program];
 }
 
 - (IBAction)digitPressed:(UIButton *)sender 
@@ -30,12 +35,14 @@
     NSString *newText = [currentDisplayText hasPrefix:@"0"] ? digit : [currentDisplayText stringByAppendingString:digit];
 
     [self.display setText:newText];
+    [self updateDescription];
 }
 
 - (IBAction)clearBrainStack:(UIButton *)sender {
     [[self brain] clearStack];
     self.display.text = @"0";
     self.stuffEnteredLabel.text = @" ";
+    [self updateDescription];
 }
 
 - (IBAction)enterPressed:(UIButton *)sender {
@@ -52,6 +59,7 @@
     double result = [[self brain] performOperation:operation];
     [self.display setText:[NSString stringWithFormat:@"%1.2f", result]];
     [self updateStuffDisplayed:operation];
+    [self updateDescription];
 }
 
 - (void) updateStuffDisplayed:(NSString *)operationOrOperand {
@@ -71,6 +79,7 @@
 
 - (void)viewDidUnload {
     [self setStuffEnteredLabel:nil];
+    [self setProgramDescription:nil];
     [super viewDidUnload];
 }
 @end
