@@ -31,4 +31,11 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)showQuestion:(id)sender {
+    questionField.text = @"Showing question";
+}
+
+-(IBAction)showAnswer:(id)sender {
+    answerField.text = @"Showing answer";
+}
 @end
