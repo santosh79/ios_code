@@ -13,10 +13,18 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        for (int i = 0; i < 10; i++) {
-            BNRItem *p = [BNRItem randomItem];
-            NSLog(@"%@", p);            
-        }
+
+        BNRItem *backpack = [[BNRItem alloc] init];
+        [backpack setItemName:@"- Backpack"];
+        
+        BNRItem *calculator = [[BNRItem alloc] init];
+        [calculator setItemName:@"Calculator"];
+        
+        [backpack setContainedItem:calculator];
+        backpack = nil;
+        
+        NSLog(@"Calculator container %@", [calculator container]);
+        calculator = nil;
         
     }
     return 0;

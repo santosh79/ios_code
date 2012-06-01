@@ -9,6 +9,8 @@
 #import "BNRItem.h"
 
 @implementation BNRItem
+@synthesize itemName;
+@synthesize serialNumber, valueInDollars, containedItem, container, dateCreated;
 
 + (id) randomItem {
     NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Fluffy", @"Rusty", @"Shiny", nil];
@@ -50,32 +52,12 @@
     return [NSString stringWithFormat:@"%@ (%@): With $%d, recorded on %@", itemName, serialNumber, valueInDollars, dateCreated];
 }
 
-- (void)setItemName:(NSString *)str {
-    itemName = str;
+- (void) setContainedItem:(BNRItem *)i {
+  containedItem = i;
+  [i setContainer:self];
 }
 
-- (NSString *)itemName {
-    return itemName;
+- (void) dealloc {
+    NSLog(@"Destroyed %@", self);
 }
-
-- (void)setSerialNumber:(NSString *)str {
-    serialNumber = str;
-}
-
-- (NSString *)serialNumber {
-    return serialNumber;
-}
-
-- (void)setValueInDollars:(int)i {
-    valueInDollars = i;
-}
-
-- (int)valueInDollars {
-    return valueInDollars;
-}
-
-- (NSDate *)dateCreated {
-    return dateCreated;
-}
-
 @end
