@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HypnosisterAppDelegate : UIResponder <UIApplicationDelegate>
+@interface HypnosisterAppDelegate : UIResponder <UIApplicationDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

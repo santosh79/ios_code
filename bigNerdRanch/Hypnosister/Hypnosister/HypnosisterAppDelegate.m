@@ -9,17 +9,34 @@
 #import "HypnosisterAppDelegate.h"
 #import "HypnosisView.h"
 
-@implementation HypnosisterAppDelegate
+@interface HypnosisterAppDelegate()
+@property (nonatomic, strong) HypnosisView *view;
+@end
 
+@implementation HypnosisterAppDelegate
+@synthesize view = _view;
 @synthesize window = _window;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:self.window.bounds];
-    [[self window] addSubview:view];
-    BOOL success = [view becomeFirstResponder];
+    CGRect screenRect = self.window.bounds;
+
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    [scrollView setMinimumZoomScale:1.0];
+    [scrollView setMaximumZoomScale:5.0];
+    [scrollView setDelegate:self];
+    [self.window addSubview:scrollView];
+    
+    CGRect bigRect = screenRect;
+    
+    self.view = [[HypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:self.view];
+    [scrollView setContentSize:bigRect.size];    
+    
+    BOOL success = [self.view becomeFirstResponder];
     if (success) {
         NSLog(@"HypnosisView became the first responder");
     } else {
@@ -30,6 +47,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.view;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
