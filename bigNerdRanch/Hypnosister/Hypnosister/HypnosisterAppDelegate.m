@@ -19,6 +19,12 @@
     
     HypnosisView *view = [[HypnosisView alloc] initWithFrame:self.window.bounds];
     [[self window] addSubview:view];
+    BOOL success = [view becomeFirstResponder];
+    if (success) {
+        NSLog(@"HypnosisView became the first responder");
+    } else {
+        NSLog(@"HypnosisView did NOT become the first responder");
+    }
 
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

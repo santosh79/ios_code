@@ -9,13 +9,26 @@
 #import "HypnosisView.h"
 
 @implementation HypnosisView
+@synthesize circleColor = _circleColor;
 
 - (id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
+        [self setCircleColor:[UIColor lightGrayColor]];
     }
     return self;
+}
+
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
+
+- (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [self setCircleColor:[UIColor brownColor]];
+        [self setNeedsDisplay];        
+    }
 }
 
 - (void) drawRect:(CGRect)rect {
@@ -29,7 +42,7 @@
     float maxRadius = hypot(bounds.size.width, bounds.size.height) / 2.0;
     
     CGContextSetLineWidth(ref, 10);
-    [[UIColor lightGrayColor] setStroke];
+    [[self circleColor] setStroke];
 
     for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
         CGContextAddArc(ref, center.x, center.y, currentRadius, 0.0, M_PI * 2.0, YES);
