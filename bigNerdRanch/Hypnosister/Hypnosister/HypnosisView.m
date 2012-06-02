@@ -29,13 +29,28 @@
     float maxRadius = hypot(bounds.size.width, bounds.size.height) / 2.0;
     
     CGContextSetLineWidth(ref, 10);
-    CGContextSetRGBStrokeColor(ref, 0.6, 0.6, 0.6, 1.0);
-    
+    [[UIColor lightGrayColor] setStroke];
+
     for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
         CGContextAddArc(ref, center.x, center.y, currentRadius, 0.0, M_PI * 2.0, YES);
         CGContextStrokePath(ref);
     }
     
+    
+    NSString *text = @"You are getting sleepy.";
+    UIFont *font = [UIFont boldSystemFontOfSize:28];
+    CGRect textRect;
+    textRect.size = [text sizeWithFont:font];
+    textRect.origin.x = center.x - textRect.size.width / 2.0;
+    textRect.origin.y = center.y - textRect.size.height / 2.0;
+    [[UIColor blackColor] setFill];
+
+    
+    CGSize offset = CGSizeMake(4, 1);
+    CGColorRef color = [[UIColor darkGrayColor] CGColor];
+    CGContextSetShadowWithColor(ref, offset, 2.0, color);
+    
+    [text drawInRect:textRect withFont:font];
 }
 
 @end
