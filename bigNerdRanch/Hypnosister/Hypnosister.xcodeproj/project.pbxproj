@@ -263,6 +263,7 @@
 				54092E2F157AB5C2003EA2ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
