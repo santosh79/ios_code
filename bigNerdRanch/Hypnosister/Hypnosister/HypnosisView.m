@@ -26,7 +26,13 @@
 
 - (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (motion == UIEventSubtypeMotionShake) {
-        [self setCircleColor:[UIColor brownColor]];
+        NSArray * colors = [NSArray arrayWithObjects:[UIColor blueColor], [UIColor brownColor], [UIColor redColor], [UIColor blackColor], [UIColor greenColor], [UIColor orangeColor], nil];
+        UIColor *nextColor = [colors objectAtIndex:(rand() % (colors.count - 1))];
+        while (nextColor == self.circleColor) {
+            nextColor = [colors objectAtIndex:(rand() % (colors.count - 1))];
+        }
+        self.circleColor = nextColor;
+        [self setCircleColor:self.circleColor];
         [self setNeedsDisplay];        
     }
 }
