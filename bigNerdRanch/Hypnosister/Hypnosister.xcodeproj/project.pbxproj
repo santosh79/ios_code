@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5445F25D1587E20B0004CC78 /* HypnosisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5445F25C1587E20B0004CC78 /* HypnosisView.m */; };
 		544DFA6E1587DDDE00DF31CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544DFA6D1587DDDE00DF31CC /* UIKit.framework */; };
 		544DFA701587DDDE00DF31CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544DFA6F1587DDDE00DF31CC /* Foundation.framework */; };
 		544DFA721587DDDE00DF31CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544DFA711587DDDE00DF31CC /* CoreGraphics.framework */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5445F25B1587E20B0004CC78 /* HypnosisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HypnosisView.h; sourceTree = "<group>"; };
+		5445F25C1587E20B0004CC78 /* HypnosisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HypnosisView.m; sourceTree = "<group>"; };
 		544DFA691587DDDE00DF31CC /* Hypnosister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hypnosister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		544DFA6D1587DDDE00DF31CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		544DFA6F1587DDDE00DF31CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,6 +77,8 @@
 			children = (
 				544DFA7C1587DDDE00DF31CC /* HypnosisterAppDelegate.h */,
 				544DFA7D1587DDDE00DF31CC /* HypnosisterAppDelegate.m */,
+				5445F25B1587E20B0004CC78 /* HypnosisView.h */,
+				5445F25C1587E20B0004CC78 /* HypnosisView.m */,
 				544DFA741587DDDE00DF31CC /* Supporting Files */,
 			);
 			path = Hypnosister;
@@ -154,6 +159,7 @@
 			files = (
 				544DFA7A1587DDDE00DF31CC /* main.m in Sources */,
 				544DFA7E1587DDDE00DF31CC /* HypnosisterAppDelegate.m in Sources */,
+				5445F25D1587E20B0004CC78 /* HypnosisView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +263,7 @@
 				544DFA831587DDDE00DF31CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
