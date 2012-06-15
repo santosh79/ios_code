@@ -9,7 +9,7 @@
 #import "HypnosisView.h"
 
 @implementation HypnosisView
-@synthesize circleColor;
+@synthesize circleColor = _circleColor;
 
 - (id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -18,6 +18,22 @@
         [self setCircleColor:[UIColor lightGrayColor]];
     }
     return self;
+}
+
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
+
+- (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        NSLog(@"Device started shaking");
+        [self setCircleColor:[UIColor redColor]];
+    }
+}
+
+- (void) setCircleColor:(UIColor *)circleColor {
+    _circleColor = circleColor;
+    [self setNeedsDisplay];
 }
 
 - (void) drawRect:(CGRect)rect {
