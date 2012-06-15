@@ -17,16 +17,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    CGRect viewFrame = CGRectMake(160, 240, 100, 150);
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:viewFrame];
-    [view setBackgroundColor:[UIColor redColor]];
+    HypnosisView *view = [[HypnosisView alloc] initWithFrame:self.window.frame];
     [[self window] addSubview:view];
-    
-    CGRect anotherFrame = CGRectMake(20, 30, 50, 50);
-    HypnosisView *anotherView = [[HypnosisView alloc] initWithFrame:anotherFrame];
-    [anotherView setBackgroundColor:[UIColor blueColor]];
-    [view addSubview:anotherView];
-    
+        
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
