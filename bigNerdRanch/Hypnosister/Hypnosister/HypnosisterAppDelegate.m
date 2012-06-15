@@ -16,9 +16,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    CGRect screenRect = [[self window] bounds];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    [[self window] addSubview:scrollView];
+        
     // Override point for customization after application launch.
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:self.window.frame];
-    [[self window] addSubview:view];
+    view = [[HypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:view];
+    
+    [scrollView setContentSize:screenRect.size];
+    [scrollView setMinimumZoomScale:1.0];
+    [scrollView setMaximumZoomScale:5.0];
+    [scrollView setDelegate:self];
     
     BOOL success = [view becomeFirstResponder];
     if (success) {
@@ -29,7 +40,13 @@
         
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     return YES;
+}
+
+- (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return view;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
